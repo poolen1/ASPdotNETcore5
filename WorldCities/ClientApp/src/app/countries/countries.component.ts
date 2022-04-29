@@ -4,16 +4,16 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 
-import { City } from './City';
+import { Country } from './Country';
 
 @Component({
-  selector: 'app-cities',
-  templateUrl: './cities.component.html',
-  styleUrls: ['./cities.component.css']
+  selector: 'app-countries',
+  templateUrl: './countries.component.html',
+  styleUrls: ['./countries.component.css']
 })
-export class CitiesComponent implements OnInit {
-  public displayedColumns: string[] = ['id', 'name', 'lat', 'lon'];
-  public cities: MatTableDataSource<City>;
+export class CountriesComponent implements OnInit {
+  public displayedColumns: string[] = ['id', 'name', 'iso2', 'iso3'];
+  public cities: MatTableDataSource<Country>;
 
   defaultPageIndex: number = 0;
   defaultPageSize: number = 10;
@@ -45,7 +45,7 @@ export class CitiesComponent implements OnInit {
   }
 
   getData(event: PageEvent) {
-    var url = this.baseUrl + 'api/Cities';
+    var url = this.baseUrl + 'api/Countries';
     var params = new HttpParams()
       .set("pageIndex", event.pageIndex.toString())
       .set("pageSize", event.pageSize.toString())
@@ -67,7 +67,7 @@ export class CitiesComponent implements OnInit {
         this.paginator.length = result.totalCount;
         this.paginator.pageIndex = result.pageIndex;
         this.paginator.pageSize = result.pageSize;
-        this.cities = new MatTableDataSource<City>(result.data);
+        this.cities = new MatTableDataSource<Country>(result.data);
       }, error => console.error(error));
   }
 
