@@ -13,7 +13,7 @@ import { Country } from './Country';
 })
 export class CountriesComponent implements OnInit {
   public displayedColumns: string[] = ['id', 'name', 'iso2', 'iso3'];
-  public cities: MatTableDataSource<Country>;
+  public countries: MatTableDataSource<Country>;
 
   defaultPageIndex: number = 0;
   defaultPageSize: number = 10;
@@ -42,6 +42,7 @@ export class CountriesComponent implements OnInit {
       this.filterQuery = query;
     }
     this.getData(pageEvent);
+
   }
 
   getData(event: PageEvent) {
@@ -67,7 +68,7 @@ export class CountriesComponent implements OnInit {
         this.paginator.length = result.totalCount;
         this.paginator.pageIndex = result.pageIndex;
         this.paginator.pageSize = result.pageSize;
-        this.cities = new MatTableDataSource<Country>(result.data);
+        this.countries = new MatTableDataSource<Country>(result.data);
       }, error => console.error(error));
   }
 
