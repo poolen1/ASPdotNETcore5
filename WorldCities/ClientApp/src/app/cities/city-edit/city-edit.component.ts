@@ -8,12 +8,14 @@ import { map } from 'rxjs/operators';
 import { City } from '../city';
 import { Country } from '../../countries/country';
 
+import { BaseFormComponent } from '../../base.form.component';
+
 @Component({
   selector: 'app-city-edit',
   templateUrl: './city-edit.component.html',
   styleUrls: ['./city-edit.component.css']
 })
-export class CityEditComponent implements OnInit {
+export class CityEditComponent extends BaseFormComponent implements OnInit {
 
   // the view title
   title: string;
@@ -37,6 +39,7 @@ export class CityEditComponent implements OnInit {
     private router: Router,
     private http: HttpClient,
     @Inject('BASE_URL') private baseUrl: string) {
+    super();
   }
 
   ngOnInit(): void {
@@ -145,4 +148,5 @@ export class CityEditComponent implements OnInit {
       }));
     }
   }
+
 }
