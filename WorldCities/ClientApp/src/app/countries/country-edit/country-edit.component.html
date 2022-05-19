@@ -32,7 +32,7 @@
              placeholder="2 letters country code..."
              class="form-control" />
 
-      <div *ngIf="hasError('name')"
+      <div *ngIf="hasError('iso2')"
            class="invalid-feedback" >
         <div *ngIf="form.get('iso2').errors?.required">
           ISO 3166-1 ALPHA-2 country code is required.
@@ -54,7 +54,7 @@
              placeholder="3 letters country code..."
              class="form-control" />
 
-      <div *ngIf="hasError('name')"
+      <div *ngIf="hasError('iso3')"
            class="invalid-feedback">
         <div *ngIf="form.get('iso3').errors?.required">
           ISO 3166-1 ALPHA-3 country code is required.
