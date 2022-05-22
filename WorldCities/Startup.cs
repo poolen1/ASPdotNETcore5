@@ -7,6 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using WorldCities.Data;
+using Serilog;
 
 namespace WorldCities
 {
@@ -96,6 +97,9 @@ namespace WorldCities
                     spa.UseAngularCliServer(npmScript: "start");
                 }
             });
+
+            // Use the Serilog request logging middleware to log HTTP requests
+            app.UseSerilogRequestLogging();
         }
     }
 }
